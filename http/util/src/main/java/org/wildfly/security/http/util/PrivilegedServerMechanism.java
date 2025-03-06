@@ -205,6 +205,11 @@ final class PrivilegedServerMechanism implements HttpServerAuthenticationMechani
         }
 
         @Override
+        public String getRequestScheme() {
+            return wrapped.getRequestScheme();
+        }
+
+        @Override
         public URI getRequestURI() {
             return wrapped.getRequestURI();
         }

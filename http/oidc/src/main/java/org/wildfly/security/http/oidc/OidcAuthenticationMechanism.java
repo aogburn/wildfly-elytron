@@ -60,7 +60,7 @@ final class OidcAuthenticationMechanism implements HttpServerAuthenticationMecha
     public void evaluateRequest(HttpServerRequest request) throws HttpAuthenticationException {
         OidcClientContext oidcClientContext = getOidcClientContext(request);
         if (oidcClientContext == null) {
-            log.debugf("Ignoring request for path [%s] from mechanism [%s]. No client configuration context found.", request.getRequestURI(), getMechanismName());
+            log.debugf("Ignoring request for path [%s] from mechanism [%s]. No client configuration context found.", request.getRequestURIString(), getMechanismName());
             request.noAuthenticationInProgress();
             return;
         }
@@ -76,7 +76,7 @@ final class OidcAuthenticationMechanism implements HttpServerAuthenticationMecha
         httpFacade.getTokenStore().checkCurrentToken();
         if ((oidcClientConfiguration.getAuthServerBaseUrl() != null && keycloakPreActions(httpFacade, oidcClientConfiguration))
                 || preflightCors(httpFacade, oidcClientConfiguration)) {
-            log.debugf("Pre-actions has aborted the evaluation of [%s]", request.getRequestURI());
+            log.debugf("Pre-actions has aborted the evaluation of [%s]", request.getRequestURIString());
             httpFacade.authenticationInProgress();
             return;
         }

@@ -124,8 +124,18 @@ public class HttpServerRequestWrapper implements HttpServerRequest {
     }
 
     @Override
+    public String getRequestScheme() {
+        return delegate.getRequestScheme();
+    }
+
+    @Override
     public URI getRequestURI() {
         return delegate.getRequestURI();
+    }
+
+    @Override
+    public String getRequestURIString() {
+        return delegate.getRequestURIString();
     }
 
     @Override

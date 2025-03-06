@@ -147,6 +147,7 @@ public class AbstractBaseHttpTest {
         private Status result;
         private HttpServerMechanismsResponder responder;
         private String remoteUser;
+        private String requestScheme;
         private URI requestURI;
         private List<HttpServerCookie> cookies;
         private String requestMethod = "GET";
@@ -177,6 +178,7 @@ public class AbstractBaseHttpTest {
             }
             this.remoteUser = null;
             this.requestURI = requestURI;
+            this.requestScheme = requestURI.getScheme();
             this.cookies = new ArrayList<>();
         }
 
@@ -186,6 +188,7 @@ public class AbstractBaseHttpTest {
             }
             this.remoteUser = null;
             this.requestURI = requestURI;
+            this.requestScheme = requestURI.getScheme();
             this.cookies = new ArrayList<>();
             this.sessionScopeAttachments = sessionScopeAttachments;
         }
@@ -196,6 +199,7 @@ public class AbstractBaseHttpTest {
             }
             this.remoteUser = null;
             this.requestURI = requestURI;
+            this.requestScheme = requestURI.getScheme();
             this.cookies = cookies;
         }
 
@@ -203,6 +207,7 @@ public class AbstractBaseHttpTest {
             this.requestHeaders = requestHeaders;
             this.remoteUser = null;
             this.requestURI = requestURI;
+            this.requestScheme = requestURI.getScheme();
             this.cookies = new ArrayList<>();
             this.requestMethod = requestMethod;
         }
@@ -213,6 +218,7 @@ public class AbstractBaseHttpTest {
             }
             this.remoteUser = null;
             this.requestURI = requestURI;
+            this.requestScheme = requestURI.getScheme();
             this.cookies = new ArrayList<>();
             if (cookie != null) {
                 final String cookieName = cookie.substring(0, cookie.indexOf('='));
@@ -285,6 +291,10 @@ public class AbstractBaseHttpTest {
 
         public String getRequestMethod() {
             return requestMethod;
+        }
+
+        public String getRequestScheme() {
+            return requestScheme;
         }
 
         public URI getRequestURI() {
@@ -640,6 +650,10 @@ public class AbstractBaseHttpTest {
 
         public String getRequestMethod() {
             return requestMethod;
+        }
+
+        public String getRequestScheme() {
+            throw new IllegalStateException();
         }
 
         public URI getRequestURI() {

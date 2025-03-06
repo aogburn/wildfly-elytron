@@ -88,7 +88,7 @@ public class SetMechanismInformationMechanismFactory implements HttpServerAuthen
                 try {
                     final String mechanismName = getMechanismName();
                     final String hostName = resolvedHostName;
-                    final String protocol = request.getRequestURI().getScheme();
+                    final String protocol = request.getRequestScheme();
                     callbackHandler.handle(new Callback[] { new MechanismInformationCallback(new MechanismInformation() {
 
                         @Override

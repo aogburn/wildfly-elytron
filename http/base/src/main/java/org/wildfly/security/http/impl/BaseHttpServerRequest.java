@@ -92,8 +92,18 @@ public abstract class BaseHttpServerRequest implements HttpServerRequest {
     }
 
     @Override
+    public String getRequestScheme() {
+        return httpExchangeSpi.getRequestScheme();
+    }
+
+    @Override
     public URI getRequestURI() {
         return httpExchangeSpi.getRequestURI();
+    }
+
+    @Override
+    public String getRequestURIString() {
+        return httpExchangeSpi.getRequestURIString();
     }
 
     @Override

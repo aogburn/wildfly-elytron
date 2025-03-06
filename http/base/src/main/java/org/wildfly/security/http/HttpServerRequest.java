@@ -175,11 +175,29 @@ public interface HttpServerRequest extends HttpServerScopes {
     String getRequestMethod();
 
     /**
+     * Returns the scheme which this request was made, for example, http or https.
+     *
+     * @return a <code>String</code> specifying the scheme with which this request was made.
+     */
+    default String getRequestScheme() {
+        return null;
+    }
+
+    /**
      * Get the URI representation for the current request.
      *
      * @return the URI representation for the current request.
      */
     URI getRequestURI();
+
+    /**
+     * Get the String representation for the current request URI.
+     *
+     * @return the String representation for the current request URI.
+     */
+    default String getRequestURIString() {
+        return getRequestURI().toString();
+    }
 
     /**
      * Get the request path. This is the path relative to the context path. E.g.: for a HTTP GET request to

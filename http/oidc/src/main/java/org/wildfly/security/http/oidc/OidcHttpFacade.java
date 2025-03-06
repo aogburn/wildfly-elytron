@@ -205,7 +205,7 @@ public class OidcHttpFacade {
             @Override
             public String getURI() {
                 try {
-                    return URLDecoder.decode(request.getRequestURI().toString(), "UTF-8");
+                    return URLDecoder.decode(request.getRequestURIString(), "UTF-8");
                 } catch (UnsupportedEncodingException e) {
                     throw log.failedToDecodeRequestUri(e);
                 }
@@ -218,7 +218,7 @@ public class OidcHttpFacade {
 
             @Override
             public boolean isSecure() {
-                return request.getRequestURI().getScheme().equals("https");
+                return request.getRequestScheme().equals("https");
             }
 
             @Override
